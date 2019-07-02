@@ -1,0 +1,7 @@
+{
+    "name": "DigitalFoundryVideoBrowser",
+    "version": "1.0",
+    "dependencies": {
+        "@types/firefox-webext-browser": "^67.0.2"
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Digital Foundry Video Browser",
+  "version": "1.0",
+
+  "description": "Offers an easily navigable interface for viewing available videos on Digital Foundry's video-hosting site - digitalfoundry.net",
+
+  "icons":
+  {
+  },
+
+  "content_scripts":
+  [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["Main.js"]
+    }
+  ]
+
+}
