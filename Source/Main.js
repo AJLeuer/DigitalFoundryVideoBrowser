@@ -1,3 +1,1 @@
-var digitalFoundryVideoInformationService = new DigitalFoundryVideoInformationService();
-
 console.log(DigitalFoundryVideoInformationService.DigitalFoundryVideoListingURL);
