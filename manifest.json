@@ -1,20 +1,34 @@
 {
-  "manifest_version": 2,
-  "name": "Digital Foundry Video Browser",
-  "version": "1.0",
+    "manifest_version": 2,
+    "name": "Digital Foundry Video Browser",
+    "version": "1.0",
 
-  "description": "Offers an easily navigable interface for viewing available videos on Digital Foundry's video-hosting site - digitalfoundry.net",
+    "description": "Offers an easily navigable interface for viewing available videos on Digital Foundry's video-hosting site - digitalfoundry.net",
 
-  "icons":
-  {
-  },
-
-  "content_scripts":
-  [
+    "icons":
     {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["Main.js"]
-    }
-  ]
+        "48": "Icons/Game Controller (48x48).png",
+        "96": "Icons/Game Controller (96x96).png"
+    },
 
+    "permissions":
+    [
+        "*://*.digitalfoundry.net/*"
+    ],
+
+    "background":
+    {
+        "scripts":
+        [
+            "Source/Services/DigitalFoundryVideoInformationService.js",
+            "Source/Main.js"
+        ]
+    },
+
+    "browser_action":
+    {
+        "default_icon":  "Icons/Game Controller (32x32).png",
+        "default_title": "Digital Foundry Videos",
+        "default_popup": "Source/View/ToolbarView.html"
+    }
 }
