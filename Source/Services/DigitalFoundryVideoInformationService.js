@@ -1,31 +1,39 @@
-class Video
-{
-	Title = "";
-	UploadDate = new Date();
 
-	constructor(title, uploadDate)
-	{
-		this.Title = title;
-		this.UploadDate = uploadDate;
-	}
-}
+const DigitalFoundryVideoInformationServiceVideoDirectoryRetrievalCallbacks = [];
+const DigitalFoundryVideoInformationServiceXMLConverter = new DOMParser();
 
 class DigitalFoundryVideoInformationService
 {
 	static get DigitalFoundryVideoListingURL() { return "https://www.digitalfoundry.net/sitemap.xml"};
 
+	static get VideoDirectoryRetrievalCallbacks() { return DigitalFoundryVideoInformationServiceVideoDirectoryRetrievalCallbacks; };
+
+	static get XMLConverter() { return DigitalFoundryVideoInformationServiceXMLConverter; }
+
 	static RetrieveVideoDirectoryXML()
 	{
-		var videoDirectoryResponseHandler = (response) =>
-		{
-			return response.text();
-		};
-
 		var videoDirectoryRetrievalRequest = fetch(DigitalFoundryVideoInformationService.DigitalFoundryVideoListingURL);
 
-		var rawVideoDirectory = videoDirectoryRetrievalRequest.then(videoDirectoryResponseHandler);
+		videoDirectoryRetrievalRequest
+			.then((response) =>
+			{
+				return response.text();
+			})
+			.then(function (responseBody)
+			{
+				var videoDirectoryXML = DigitalFoundryVideoInformationService.XMLConverter.parseFromString(responseBody, "text/xml");
+				DigitalFoundryVideoInformationService.ParseRawVideoDirectoryXMLIntoList(videoDirectoryXML);
+			});
+	}
 
-		return rawVideoDirectory;
+	static ParseRawVideoDirectoryXMLIntoList(videoDirectoryXML)
+	{
+		console.log(videoDirectoryXML)
+	}
+
+	static RegisterForUpdatedVideoDirectoryInfo(callBack)
+	{
+		this.VideoDirectoryRetrievalCallbacks.push(callBack);
 	}
 
 

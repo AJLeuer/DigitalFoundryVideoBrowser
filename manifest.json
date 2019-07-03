@@ -13,14 +13,16 @@
 
     "permissions":
     [
-        "*://*.digitalfoundry.net/*"
+        "*://*.digitalfoundry.net/*",
+        "https://*.w3schools.com/*"
     ],
+
+    "content_security_policy": "script-src 'self' https://*.w3schools.com; object-src 'self'",
 
     "background":
     {
         "scripts":
         [
-            "Source/Services/DigitalFoundryVideoInformationService.js"
         ]
     },
 
@@ -28,6 +30,6 @@
     {
         "default_icon":  "Icons/Game Controller (32x32).png",
         "default_title": "Digital Foundry Videos",
-        "default_popup": "Source/View/ToolbarView.html"
+        "default_popup": "Source/View/MainView.html"
     }
 }
