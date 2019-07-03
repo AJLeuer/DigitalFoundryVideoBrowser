@@ -1,8 +1,24 @@
+const MainViewTableID = "videos";
+const MainViewTableHeadersID = "videoTableHeaders";
+
+class MainView
+{
+	static get Table() { return document.getElementById(MainViewTableID); }
+
+	static UpdateVideoView(videos)
+	{
+		videos.forEach((video) =>
+		{
+			VideoEntry.CreateAndAppendToHTMLTable(MainView.Table, video);
+		});
+	}
+}
+
 
 function SetupMainGrid()
 {
-	var videoTable = document.getElementById("videoTableHeaders");
-	var videoTableHeaders = videoTable.cells;
+	var videoTableHeaderRow = document.getElementById(MainViewTableHeadersID);
+	var videoTableHeaders = videoTableHeaderRow.cells;
 
 	for (let i = 0; i < videoTableHeaders.length; i++)
 	{

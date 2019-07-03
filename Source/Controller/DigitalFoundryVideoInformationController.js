@@ -7,6 +7,7 @@ class DigitalFoundryVideoInformationController
 
 	static DisplayAvailableVideos()
 	{
-
+		DigitalFoundryVideoInformationService.RegisterForUpdatedVideoInfo(MainView.UpdateVideoView);
+		DigitalFoundryVideoInformationService.RetrieveUpdatedVideoInfo();
 	}
 }

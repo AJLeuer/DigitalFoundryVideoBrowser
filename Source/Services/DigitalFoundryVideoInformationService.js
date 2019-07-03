@@ -1,14 +1,25 @@
 
-const DigitalFoundryVideoInformationServiceVideoDirectoryRetrievalCallbacks = [];
+const DigitalFoundryVideoInformationServiceVideoInfoRetrievalSubscriberCallbacks = [];
 const DigitalFoundryVideoInformationServiceXMLConverter = new DOMParser();
 
 class DigitalFoundryVideoInformationService
 {
 	static get DigitalFoundryVideoListingURL() { return "https://www.digitalfoundry.net/sitemap.xml"};
 
-	static get VideoDirectoryRetrievalCallbacks() { return DigitalFoundryVideoInformationServiceVideoDirectoryRetrievalCallbacks; };
+	static get VideoInfoRetrievalSubscriberCallbacks() { return DigitalFoundryVideoInformationServiceVideoInfoRetrievalSubscriberCallbacks; };
 
 	static get XMLConverter() { return DigitalFoundryVideoInformationServiceXMLConverter; }
+
+
+	static RegisterForUpdatedVideoInfo(callBack)
+	{
+		this.VideoInfoRetrievalSubscriberCallbacks.push(callBack);
+	}
+
+	static RetrieveUpdatedVideoInfo()
+	{
+		this.RetrieveVideoDirectoryXML();
+	}
 
 	static RetrieveVideoDirectoryXML()
 	{
@@ -22,18 +33,24 @@ class DigitalFoundryVideoInformationService
 			.then(function (responseBody)
 			{
 				var videoDirectoryXML = DigitalFoundryVideoInformationService.XMLConverter.parseFromString(responseBody, "text/xml");
-				DigitalFoundryVideoInformationService.ParseRawVideoDirectoryXMLIntoList(videoDirectoryXML);
+				DigitalFoundryVideoInformationService.ParseRawVideoDirectoryXMLIntoListOfVideos(videoDirectoryXML);
 			});
 	}
 
-	static ParseRawVideoDirectoryXMLIntoList(videoDirectoryXML)
+	static ParseRawVideoDirectoryXMLIntoListOfVideos(videoDirectoryXML)
 	{
-		console.log(videoDirectoryXML)
+		console.log(videoDirectoryXML);
+		//todo
+		const videoList = [new Video("Some Game", new Date("1999-09-26")), new Video("Another Game", new Date("2005-09-26")), new Video("Yet Another Game", new Date("2015-03-21"))];
+		this.UpdateObserversWithLatestVideoList(videoList);
 	}
 
-	static RegisterForUpdatedVideoDirectoryInfo(callBack)
+	static UpdateObserversWithLatestVideoList(videos)
 	{
-		this.VideoDirectoryRetrievalCallbacks.push(callBack);
+		this.VideoInfoRetrievalSubscriberCallbacks.forEach((callBack) =>
+		{
+			callBack(videos);
+		});
 	}
 
 
