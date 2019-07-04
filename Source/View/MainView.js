@@ -1,7 +1,9 @@
-import { VideoEntry } from "./VideoEntry";
 import Tabulator from "tabulator-tables";
+import Moment from "moment";
 import { Video } from "../Model/Video";
-//import { w3 } from "../Libraries/w3";
+
+window.moment = Moment; //temporary fix for an open bug in Tabulator
+
 
 const MainViewVideoTableID = "videos";
 const MainViewVideoTableHeadersID = "videoTableHeaders";
@@ -28,8 +30,8 @@ function SetupMainGrid()
 		index: "Title",
 		columns:
 		[
-			{ title:"Title", field: "Title", align: "left", sorter: "string" },
-			{ title:"Date", field: "UploadDate", align:"left", sorter: "date" }
+			{ title:"Title", field: "Title", align: "left", sorter: "string", formatter: "link" },
+			{ title:"Date", field: "UploadDate", align:"left", sorter: "date", formatter: "datetime" }
 		],
 	});
 
@@ -40,19 +42,6 @@ function SetupMainGrid()
 	];
 
 	table.setData(defaultDummyVideoTableData);
-
-	// var videoTableHeaderRow = document.getElementById(MainViewTableHeadersID);
-	// var videoTableHeaders = videoTableHeaderRow.cells;
-	//
-	// for (let i = 0; i < videoTableHeaders.length; i++)
-	// {
-	// 	var videoTableHeader = videoTableHeaders[i];
-	//
-	// 	videoTableHeader.addEventListener('click', () =>
-	// 	{
-	// 		w3.sortHTML('#videos','.video', `td:nth-child(${i + 1})`);
-	// 	});
-	// }
 }
 
 function InitializeMainView()
