@@ -19,12 +19,14 @@ export class MainView
 	{
 		Table = new Tabulator(`#${MainViewVideoTableID}`,
 		{
+			layout:"fitColumns",
+			height:"100%",
 			layoutColumnsOnNewData: true,
 			index: "Title",
 			columns:
 				[
-					{ title:"Title", field: "Title", align: "left", sorter: "string", formatter: "link" },
-					{ title:"Date", field: "UploadDate", align:"left", sorter: "date", formatter: "datetime" }
+					{ title:"Title", field: "Title", align: "left", sorter: "string", formatter: "link", widthGrow:5 },
+					{ title:"Date", field: "UploadDate", align:"left", sorter: "date", formatter: "datetime", widthGrow:2 }
 				],
 		});
 

@@ -104,8 +104,7 @@ export class DigitalFoundryVideoInformationService
 		var videoURLs = this.ExtractVideoURLsFromVideoDirectoryXML(videoDirectoryXML);
 		var videoList = [];
 
-		//for (var i = 0; i < videoURLs.length; i++)
-		for (var i = 0; i < 45; i++)  //temporary for debugging
+		for (var i = 0; i < videoURLs.length; i++)
 		{
 			var videoURL = videoURLs[i];
 			var video = new Video(videoURL, new Date("1999-09-26"));
