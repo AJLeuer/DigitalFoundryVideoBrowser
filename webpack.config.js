@@ -9,6 +9,7 @@ module.exports =
     {
         Scripts:
         [
+	        "./Source/Libraries/w3.js",
 	        "./Source/Controller/DigitalFoundryVideoInformationController.js",
 	        "./Source/Services/DigitalFoundryVideoInformationService.js",
 	        "./Source/View/VideoEntry.js",

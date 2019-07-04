@@ -1,4 +1,5 @@
 import { VideoEntry } from "./VideoEntry";
+import { w3 } from "../Libraries/w3";
 
 const MainViewTableID = "videos";
 const MainViewTableHeadersID = "videoTableHeaders";
