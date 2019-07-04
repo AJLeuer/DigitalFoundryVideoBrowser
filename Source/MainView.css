@@ -16,10 +16,11 @@ th, td
     background: none;
 }
 
-.videoGrid tr:hover
+.tabulator-table .tabulator-row:hover
 {
     background: linear-gradient(180deg, rgba(0, 167, 217, 0.75), rgba(0, 148, 192, 0.75), rgba(0, 125, 167, 0.76));
     background-attachment: fixed;
+    color: white;
 }
 
 .videoGrid tr:hover a
