@@ -19,24 +19,17 @@ export class MainView
 	{
 		Table = new Tabulator(`#${MainViewVideoTableID}`,
 		{
+			reactiveData:true,
 			layout:"fitColumns",
 			height:"100%",
 			layoutColumnsOnNewData: true,
 			index: "Title",
 			columns:
 				[
-					{ title:"Title", field: "Title", align: "left", sorter: "string", formatter: "link", widthGrow:5 },
+					{ title:"Title", field: "Title", align: "left", sorter: "string", formatter: "link", formatterParams:{ labelField: "Title", urlField: "URL", target:"_blank"}, widthGrow:5 },
 					{ title:"Date", field: "UploadDate", align:"left", sorter: "date", formatter: "datetime", widthGrow:2 }
 				],
 		});
-
-		var defaultDummyVideoTableData =
-		[
-			new Video("Some Game Video", new Date("1999-09-26")),
-			new Video("Another Game Video", new Date("2002-03-03"))
-		];
-
-		Table.setData(defaultDummyVideoTableData);
 	}
 
 	static InitializeMainView()

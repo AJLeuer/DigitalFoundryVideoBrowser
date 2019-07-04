@@ -10,7 +10,7 @@ export class DigitalFoundryVideoInformationController
 
 	static DisplayAvailableVideos()
 	{
-		DigitalFoundryVideoInformationService.RegisterForUpdatedVideoInfo(MainView.UpdateVideoView);
+		DigitalFoundryVideoInformationService.RegisterForRetrievedVideoInfo(MainView.UpdateVideoView);
 		DigitalFoundryVideoInformationService.RetrieveUpdatedVideoInfo();
 	}
 }

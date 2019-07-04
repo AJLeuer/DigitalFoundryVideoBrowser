@@ -5,7 +5,8 @@ const DigitalFoundryVideoInformationServiceXMLConverter = new DOMParser();
 
 export class DigitalFoundryVideoInformationService
 {
-	static get DigitalFoundryVideoListingURL() { return "https://www.digitalfoundry.net/sitemap.xml"};
+	static get DigitalFoundryVideoSiteHostName() { return "www.digitalfoundry.net"};
+	static get DigitalFoundryVideoListingURL() { return `https://${this.DigitalFoundryVideoSiteHostName}/sitemap.xml` };
 	static get VideoDirectoryXMLTopLevelNodeName() { return "urlset" };
 
 	static get VideoInfoRetrievalSubscriberCallbacks() { return DigitalFoundryVideoInformationServiceVideoInfoRetrievalSubscriberCallbacks; };
@@ -13,7 +14,7 @@ export class DigitalFoundryVideoInformationService
 	static get XMLConverter() { return DigitalFoundryVideoInformationServiceXMLConverter; }
 
 
-	static RegisterForUpdatedVideoInfo(callBack)
+	static RegisterForRetrievedVideoInfo(callBack)
 	{
 		this.VideoInfoRetrievalSubscriberCallbacks.push(callBack);
 	}
@@ -58,6 +59,16 @@ export class DigitalFoundryVideoInformationService
 		return rootURLNode;
 	}
 
+	static FixUpObfuscatedDFURL(url)
+	{
+		if (url.hostname !== DigitalFoundryVideoInformationService.DigitalFoundryVideoSiteHostName)
+		{
+			url.hostname = DigitalFoundryVideoInformationService.DigitalFoundryVideoSiteHostName;
+		}
+
+		return url;
+	}
+
 	static ExtractURLFromURLNode(urlNode)
 	{
 		var url = {};
@@ -69,7 +80,8 @@ export class DigitalFoundryVideoInformationService
 
 			if (potentialMainURLNode.nodeType === Node.ELEMENT_NODE)
 			{
-				url = potentialMainURLNode.textContent;
+				url = new URL(potentialMainURLNode.textContent);
+				url = this.FixUpObfuscatedDFURL(url);
 				break;
 			}
 		}
@@ -107,7 +119,7 @@ export class DigitalFoundryVideoInformationService
 		for (var i = 0; i < videoURLs.length; i++)
 		{
 			var videoURL = videoURLs[i];
-			var video = new Video(videoURL, new Date("1999-09-26"));
+			var video = Video.CreateFromURL(videoURL);
 			videoList.push(video);
 		}
 
