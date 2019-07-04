@@ -1,8 +1,12 @@
+import { Video } from "../Model/Video";
+
+var SiteMapper = require('sitemapper');
 
 const DigitalFoundryVideoInformationServiceVideoInfoRetrievalSubscriberCallbacks = [];
 const DigitalFoundryVideoInformationServiceXMLConverter = new DOMParser();
+const sitemap = new SiteMapper();
 
-class DigitalFoundryVideoInformationService
+export class DigitalFoundryVideoInformationService
 {
 	static get DigitalFoundryVideoListingURL() { return "https://www.digitalfoundry.net/sitemap.xml"};
 
@@ -52,8 +56,4 @@ class DigitalFoundryVideoInformationService
 			callBack(videos);
 		});
 	}
-
-
-
-	
 }

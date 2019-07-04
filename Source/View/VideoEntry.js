@@ -1,3 +1,5 @@
+import { Video } from "../Model/Video";
+
 function getCurrentLocaleOfClient()
 {
 	if (navigator.languages && navigator.languages.length)
@@ -10,15 +12,9 @@ function getCurrentLocaleOfClient()
 	}
 }
 
-class VideoEntry
+export class VideoEntry
 {
 	static get ClassName() { return "video"; }
-
-	UnderlyingHTMLTableRowElement;
-	Video;
-
-	TitleCell;
-	DateCell;
 
 	static CreateAndAppendToHTMLTable(htmlTable, video)
 	{

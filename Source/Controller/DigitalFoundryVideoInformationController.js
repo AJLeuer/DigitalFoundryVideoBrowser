@@ -1,4 +1,7 @@
-class DigitalFoundryVideoInformationController
+import { DigitalFoundryVideoInformationService } from "../Services/DigitalFoundryVideoInformationService";
+import { MainView } from "../View/MainView";
+
+export class DigitalFoundryVideoInformationController
 {
 	static Start()
 	{

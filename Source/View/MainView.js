@@ -1,7 +1,9 @@
+import { VideoEntry } from "./VideoEntry";
+
 const MainViewTableID = "videos";
 const MainViewTableHeadersID = "videoTableHeaders";
 
-class MainView
+export class MainView
 {
 	static get Table() { return document.getElementById(MainViewTableID); }
 
@@ -36,7 +38,7 @@ function InitializeMainView()
 	SetupMainGrid();
 }
 
-InitializeMainView();
+document.addEventListener('DOMContentLoaded', InitializeMainView, false);
 
 
 

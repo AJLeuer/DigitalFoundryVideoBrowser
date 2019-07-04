@@ -1,7 +1,18 @@
 {
     "name": "DigitalFoundryVideoBrowser",
-    "version": "1.0",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "webpack"
+    },
+    "devDependencies": {
+        "copy-webpack-plugin": "latest",
+        "json-loader": "latest",
+        "raw-loader": "latest",
+        "webpack": "latest",
+        "webpack-cli": "latest"
+    },
     "dependencies": {
-        "@types/firefox-webext-browser": "^67.0.2"
+        "@types/firefox-webext-browser": "^67.0.2",
+        "sitemapper": "^2.2.0"
     }
 }

@@ -30,6 +30,6 @@
     {
         "default_icon":  "Icons/Game Controller (32x32).png",
         "default_title": "Digital Foundry Videos",
-        "default_popup": "Source/View/MainView.html"
+        "default_popup": "MainView.html"
     }
 }
