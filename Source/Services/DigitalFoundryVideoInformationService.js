@@ -1,10 +1,7 @@
 import { Video } from "../Model/Video";
 
-var SiteMapper = require('sitemapper');
-
 const DigitalFoundryVideoInformationServiceVideoInfoRetrievalSubscriberCallbacks = [];
 const DigitalFoundryVideoInformationServiceXMLConverter = new DOMParser();
-const sitemap = new SiteMapper();
 
 export class DigitalFoundryVideoInformationService
 {
@@ -44,8 +41,14 @@ export class DigitalFoundryVideoInformationService
 	static ParseRawVideoDirectoryXMLIntoListOfVideos(videoDirectoryXML)
 	{
 		console.log(videoDirectoryXML);
-		//todo
-		const videoList = [new Video("Some Game", new Date("1999-09-26")), new Video("Another Game", new Date("2005-09-26")), new Video("Yet Another Game", new Date("2015-03-21"))];
+
+		const videoList =
+		[
+			new Video("Some Game", new Date("1999-09-26")),
+			new Video("Another Game", new Date("2005-09-26")),
+			new Video("Yet Another Game", new Date("2015-03-21"))
+		];
+
 		this.UpdateObserversWithLatestVideoList(videoList);
 	}
 
