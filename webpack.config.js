@@ -9,7 +9,6 @@ module.exports =
     {
         Scripts:
         [
-	        "./Source/Libraries/w3.js",
 	        "./Source/Controller/DigitalFoundryVideoInformationController.js",
 	        "./Source/Services/DigitalFoundryVideoInformationService.js",
 	        "./Source/View/VideoEntry.js",
@@ -29,6 +28,7 @@ module.exports =
 			{ from: './manifest.json', to: './' },
 			{ from: './Source/MainView.html', to: './' },
 			{ from: './Source/MainView.css', to: './' },
+			{ from: 'node_modules/tabulator-tables/dist/css/tabulator.css', to: './' },
 			{ from: './Icons', to: './Icons' }
 		]),
 	],

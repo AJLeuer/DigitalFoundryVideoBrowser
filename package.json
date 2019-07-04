@@ -12,6 +12,7 @@
         "webpack-cli": "latest"
     },
     "dependencies": {
-        "@types/firefox-webext-browser": "^67.0.2"
+        "@types/firefox-webext-browser": "^67.0.2",
+        "tabulator-tables": "^4.2.7"
     }
 }
