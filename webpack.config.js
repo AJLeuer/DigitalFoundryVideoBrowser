@@ -11,7 +11,6 @@ module.exports =
         [
 	        "./Source/Controller/DigitalFoundryVideoInformationController.js",
 	        "./Source/Services/DigitalFoundryVideoInformationService.js",
-	        "./Source/View/VideoEntry.js",
 	        "./Source/View/MainView.js",
 	        "./Source/Main.js"
         ]
