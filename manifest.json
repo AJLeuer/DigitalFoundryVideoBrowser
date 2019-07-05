@@ -16,8 +16,6 @@
         "*://*.digitalfoundry.net/*"
     ],
 
-    "content_security_policy": "script-src 'self' https://*.w3schools.com; object-src 'self'",
-
     "background":
     {
         "scripts":
