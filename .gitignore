@@ -2,3 +2,5 @@
 .idea/
 /node_modules/
 Extension/
+
+.DS_Store

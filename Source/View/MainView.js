@@ -10,9 +10,9 @@ var Table = null;
 
 export class MainView
 {
-	static UpdateVideoView(videos)
+	static UpdateVideoView(video)
 	{
-		Table.setData(videos);
+		Table.addData([video]);
 	}
 
 	static SetupMainGrid()

@@ -23,20 +23,18 @@ module.exports =
     },
 	plugins:
 	[
-		new CopyPlugin(
-		[
-			{ from: './manifest.json', to: './' },
-			{ from: './Source/MainView.html', to: './' },
-			{ from: './Source/MainView.css', to: './' },
-			{ from: 'node_modules/tabulator-tables/dist/css/tabulator.css', to: './' },
-			{ from: './Icons', to: './Icons' }
-		]),
+		new CopyPlugin({
+			patterns: [
+				{ from: './manifest.json', to: './' },
+				{ from: './Source/MainView.html', to: './' },
+				{ from: './Source/MainView.css', to: './' },
+				{ from: 'node_modules/tabulator-tables/dist/css/tabulator.css', to: './' },
+				{ from: './Icons', to: './Icons' }]
+		}),
 	],
-	node:
-	{
-		console: true,
-		fs: 'empty',
-		net: 'empty',
-		tls: 'empty'
+	resolve: {
+		fallback: {
+			console: require.resolve('console-browserify')
+		}
 	}
 };

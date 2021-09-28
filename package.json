@@ -9,7 +9,8 @@
         "json-loader": "latest",
         "raw-loader": "latest",
         "webpack": "latest",
-        "webpack-cli": "latest"
+        "webpack-cli": "latest",
+        "console-browserify": "latest"
     },
     "dependencies": {
         "@types/firefox-webext-browser": "^67.0.2",

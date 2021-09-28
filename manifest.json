@@ -13,7 +13,8 @@
 
     "permissions":
     [
-        "*://*.digitalfoundry.net/*"
+        "*://*.digitalfoundry.net/*",
+        "*://textance.herokuapp.com/*"
     ],
 
     "background":

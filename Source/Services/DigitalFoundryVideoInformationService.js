@@ -111,26 +111,21 @@ export class DigitalFoundryVideoInformationService
 
 	static ParseVideoDirectoryXMLIntoListOfVideos(videoDirectoryXML)
 	{
-		console.log(videoDirectoryXML);
-
 		var videoURLs = this.ExtractVideoURLsFromVideoDirectoryXML(videoDirectoryXML);
-		var videoList = [];
 
 		for (var i = 0; i < videoURLs.length; i++)
 		{
 			var videoURL = videoURLs[i];
 			var video = Video.CreateFromURL(videoURL);
-			videoList.push(video);
+			this.UpdateObserversWithLatestVideo(video);
 		}
-
-		this.UpdateObserversWithLatestVideoList(videoList);
 	}
 
-	static UpdateObserversWithLatestVideoList(videos)
+	static UpdateObserversWithLatestVideo(video)
 	{
 		this.VideoInfoRetrievalSubscriberCallbacks.forEach((callBack) =>
 		{
-			callBack(videos);
+			callBack(video);
 		});
 	}
 }
